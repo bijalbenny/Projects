@@ -2,7 +2,7 @@ import cv2
 import pygame
 import time
 from deepface import DeepFace
-import threading
+import threading 
 
 # Global variable to control whether emotion detection is paused or not
 paused = False
