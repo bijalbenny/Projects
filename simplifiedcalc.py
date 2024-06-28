@@ -1,0 +1,33 @@
+import tkinter as tk
+def update_entry(text):
+    current = entry.get()
+    entry.delete(0, tk.END)
+    entry.insert(0, current + text)
+def calculate():
+        result = eval(entry.get())
+        entry.delete(0, tk.END)
+        entry.insert(0, str(result))
+def set_initial_value(value):
+    entry.delete(0, tk.END)
+    entry.insert(0, str(value))
+def read_final_value():
+    return entry.get()
+root = tk.Tk()
+root.title("Simplified Calculator")
+entry = tk.Entry(root, width=30, borderwidth=5)
+entry.grid(row=0, column=0, columnspan=4, padx=10, pady=10)
+initial_value_button = tk.Button(root, text='Set Initial Value', padx=10, pady=5, command=lambda: set_initial_value(0))
+initial_value_button.grid(row=1, column=0, padx=5, pady=5)
+final_value_button = tk.Button(root, text='Read Final Value', padx=10, pady=5, command=read_final_value)
+final_value_button.grid(row=1, column=1, padx=5, pady=5)
+add_button = tk.Button(root, text='+', padx=20, pady=10, command=lambda: update_entry('+'))
+add_button.grid(row=2, column=0, padx=5, pady=5)
+subtract_button = tk.Button(root, text='-', padx=20, pady=10, command=lambda: update_entry('-'))
+subtract_button.grid(row=2, column=1, padx=5, pady=5)
+multiply_button = tk.Button(root, text='*', padx=20, pady=10, command=lambda: update_entry('*'))
+multiply_button.grid(row=3, column=0, padx=5, pady=5)
+divide_button = tk.Button(root, text='/', padx=20, pady=10, command=lambda: update_entry('/'))
+divide_button.grid(row=3, column=1, padx=5, pady=5)
+equals_button = tk.Button(root, text='=', padx=48, pady=10, command=calculate)
+equals_button.grid(row=4, column=0, columnspan=2, padx=5, pady=5)
+root.mainloop()
